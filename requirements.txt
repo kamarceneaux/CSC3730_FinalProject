@@ -1,0 +1,20 @@
+# Bike Rental demand project (UCI Bike Sharing)
+
+# Data handling
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+
+# Modeling
+scikit-learn==1.9.1
+statsmodels==0.15.0
+xgboost==3.4.1
+lightgbm==4.7.0
+
+# Visualization
+matplotlib==3.11.2
+seaborn==0.13.2
+
+# Notebooks
+jupyterlab==4.6.4
+ipykernel==7.4.0
