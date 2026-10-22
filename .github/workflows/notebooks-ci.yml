@@ -1,0 +1,53 @@
+name: Notebook CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  notebooks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MPLBACKEND: Agg   # render plots without a display
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest==9.1.1 nbmake==1.5.5 nbqa==1.9.1 ruff==0.17.1
+          python -m ipykernel install --user --name python3
+
+      - name: Find notebooks
+        id: find
+        run: |
+          nbs=$(find . -name "*.ipynb" -not -path "*/.ipynb_checkpoints/*" | sort | tr '\n' ' ')
+          echo "list=$nbs" >> "$GITHUB_OUTPUT"
+          if [ -z "$nbs" ]; then echo "No notebooks found - skipping notebook checks."; else echo "Found: $nbs"; fi
+
+      - name: Lint (syntax errors, undefined names)
+        run: |
+          ruff check . --select E9,F63,F7,F82 --exclude .idea
+          if [ -n "${{ steps.find.outputs.list }}" ]; then
+            nbqa ruff ${{ steps.find.outputs.list }} --select E9,F63,F7,F82
+          fi
+
+      - name: Run every notebook top to bottom
+        if: steps.find.outputs.list != ''
+        run: pytest --nbmake --nbmake-timeout=600 -v ${{ steps.find.outputs.list }}
