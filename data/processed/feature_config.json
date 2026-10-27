@@ -1,0 +1,73 @@
+{
+  "train_period": [
+    "2011-01-01 00:00:00",
+    "2012-09-30 23:00:00"
+  ],
+  "test_period": [
+    "2012-10-01 00:00:00",
+    "2012-12-31 23:00:00"
+  ],
+  "targets": [
+    "casual",
+    "registered",
+    "cnt"
+  ],
+  "target_transform": "log1p (invert with expm1, clip at 0)",
+  "linear_features": {
+    "numeric_scaled": [
+      "temp",
+      "hum",
+      "windspeed"
+    ],
+    "one_hot": [
+      "season",
+      "weathersit",
+      "hour_workday"
+    ],
+    "passthrough": [
+      "yr",
+      "holiday",
+      "workingday",
+      "hr_sin",
+      "hr_cos",
+      "mnth_sin",
+      "mnth_cos",
+      "weekday_sin",
+      "weekday_cos"
+    ]
+  },
+  "tree_features": [
+    "hr",
+    "mnth",
+    "weekday",
+    "season",
+    "weathersit",
+    "yr",
+    "holiday",
+    "workingday",
+    "temp",
+    "hum",
+    "windspeed",
+    "hr_sin",
+    "hr_cos",
+    "mnth_sin",
+    "mnth_cos",
+    "weekday_sin",
+    "weekday_cos"
+  ],
+  "excluded": [
+    "instant",
+    "dteday",
+    "datetime",
+    "atemp",
+    "casual",
+    "registered",
+    "cnt"
+  ],
+  "metrics": [
+    "RMSE",
+    "MAE",
+    "RMSLE"
+  ],
+  "random_state": 42
+}
