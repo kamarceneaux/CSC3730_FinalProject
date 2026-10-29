@@ -1,0 +1,51 @@
+{
+  "python": "3.14.7",
+  "numpy": "2.5.4",
+  "pandas": "3.1.0",
+  "sklearn": "1.9.1",
+  "selection_metric": "mean expanding-window validation RMSE in original counts",
+  "target_transform": "log1p (invert with expm1, clip at 0)",
+  "models": [
+    {
+      "model": "Ridge",
+      "target": "casual",
+      "alpha": 0.001,
+      "at_grid_boundary": true
+    },
+    {
+      "model": "Ridge",
+      "target": "registered",
+      "alpha": 10.0,
+      "at_grid_boundary": false
+    },
+    {
+      "model": "Ridge",
+      "target": "cnt",
+      "alpha": 10.0,
+      "at_grid_boundary": false
+    },
+    {
+      "model": "Lasso",
+      "target": "casual",
+      "alpha": 0.001,
+      "at_grid_boundary": false
+    },
+    {
+      "model": "Lasso",
+      "target": "registered",
+      "alpha": 0.002154434690031882,
+      "at_grid_boundary": false
+    },
+    {
+      "model": "Lasso",
+      "target": "cnt",
+      "alpha": 0.002154434690031882,
+      "at_grid_boundary": false
+    }
+  ],
+  "data_sha256": {
+    "train.csv": "d302ca193fdb399da7eec59808b97169423f79a15c119dc039aaa9e783302de8",
+    "test.csv": "1348e21c558909a9de9b4f5bcb0e3fd5ef6071c2b846aa6b273a853e4712e47c",
+    "feature_config.json": "1c97d334938b9eb6ecac9db7f3eabd4eb86cacb0cf9e524a9597d0efb697996b"
+  }
+}

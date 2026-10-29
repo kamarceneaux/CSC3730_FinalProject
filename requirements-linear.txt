@@ -1,0 +1,12 @@
+# Marcus's models; core versions match the team's requirements.txt.
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+joblib==1.6.0
+# Notebook execution and local checks
+nbformat==5.11.1
+nbclient==0.11.0
+ipykernel==7.4.0
+pytest==9.2.0

@@ -41,3 +41,10 @@ data/        raw dataset
 results/     saved figures and model outputs
 .github/     CI workflow
 ```
+
+## Marcus: Ridge and Lasso
+
+See [the repository review](PROJECT_REVIEW.md) for findings, methodology, caveats,
+and setup. Run `python -m src.linear_models` from the project root, or open
+`results/marcus_linear_models.ipynb`. Results, tuning curves, diagnostics, and
+aligned predictions are written to `results/linear_models/`.
