@@ -1,0 +1,23 @@
+{
+  "inputs_sha256": {
+    "results/linear_models/test_predictions.csv": "c14ccde02f770525d9c09cd190fa863994c24f6be701c8604314eb9951c1ce9a",
+    "results/tree_models/decision_tree_baseline_predictions.csv": "27e3d8240a9843fae9ab969cf8d168490fe0ce4b25244e4425b71235d2acc1c2",
+    "results/tree_models/decision_tree_tuned_predictions.csv": "fdcdbd209585222b07633ce476ed847d42030487805a34f236c8eed086e05a1d",
+    "results/tree_models/random_forest_baseline_predictions.csv": "b6a83c83ed2ff82c9781cb8dc4bc8faecdf6f39695b1d9ae36abb11ac2bdda33",
+    "results/tree_models/random_forest_tuned_predictions.csv": "7875555e27e3a74d3bf6c100b0912beee310aab890abdb97f1b115b01749bbcf",
+    "results/tree_models/random_forest_feature_importance.csv": "c3063e221845bd392eb433e00bfc1ef92ea4f419e74e5a6b8c6e4be8368064cc",
+    "results/tree_models/decision_tree_feature_importance.csv": "7db845eeecdfb8138e4357b1265d183a29ff0267f3694748c47626bab2969187",
+    "data/processed/test.csv": "1348e21c558909a9de9b4f5bcb0e3fd5ef6071c2b846aa6b273a853e4712e47c"
+  },
+  "python": "3.9.6",
+  "numpy": "2.0.2",
+  "pandas": "2.3.3",
+  "matplotlib": "3.9.4",
+  "period": [
+    "2012-10-01 00:00:00",
+    "2012-12-31 23:00:00"
+  ],
+  "n": 2168,
+  "residual_sign": "actual minus predicted",
+  "source": "Saved predictions; no retraining"
+}
