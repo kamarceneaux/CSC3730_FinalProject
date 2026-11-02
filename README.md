@@ -57,3 +57,16 @@ This section contains the tree-based regression models for predicting casual, re
 Open `results/danielle_tree_models.ipynb` to view the complete analysis, model training, tuning results, evaluation metrics, and visualizations. Results and saved model files are available in `results/tree_models/`.
 
 **Methodology:** Models use the team's fixed chronological training and testing split, five-fold expanding time-series cross-validation for hyperparameter tuning, and log-transformed rental targets. Performance is evaluated using RMSE, MAE, and RMSLE on the October–December 2012 test period.
+
+## Ben: Baseline Models
+
+Four deliberately simple baselines that every tuned model has to beat: the training mean, the mean for each hour × working-day cell, the same profile over only the last 8 weeks of training, and unregularized OLS on the linear feature set (Marcus's pipeline with the penalty removed). Nothing is tuned. They use the team's fixed split, the same five expanding-window folds, and the same RMSE/MAE/RMSLE metrics.
+
+Open `results/ben_baselines.ipynb`, or run from the project root (Python 3.12):
+
+```
+python -m src.baselines
+python -m pytest -q
+```
+
+Metrics, fold scores, test predictions, and figures are written to `results/baselines/`.

@@ -1,0 +1,14 @@
+{
+  "python": "3.12.3",
+  "numpy": "2.5.4",
+  "pandas": "3.1.0",
+  "sklearn": "1.9.1",
+  "folds": 5,
+  "recent_profile_weeks": 8,
+  "selection_metric": "none (baselines are not tuned)",
+  "data_sha256": {
+    "train.csv": "d302ca193fdb399da7eec59808b97169423f79a15c119dc039aaa9e783302de8",
+    "test.csv": "1348e21c558909a9de9b4f5bcb0e3fd5ef6071c2b846aa6b273a853e4712e47c",
+    "feature_config.json": "1c97d334938b9eb6ecac9db7f3eabd4eb86cacb0cf9e524a9597d0efb697996b"
+  }
+}
