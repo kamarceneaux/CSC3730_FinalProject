@@ -48,3 +48,12 @@ See [the repository review](PROJECT_REVIEW.md) for findings, methodology, caveat
 and setup. Run `python -m src.linear_models` from the project root, or open
 `results/marcus_linear_models.ipynb`. Results, tuning curves, diagnostics, and
 aligned predictions are written to `results/linear_models/`.
+
+
+## Danielle: Decision Tree and Random Forest Models
+
+This section contains the tree-based regression models for predicting casual, registered, and total hourly bike rentals. The notebook compares baseline and hyperparameter-tuned Decision Tree and Random Forest models, evaluates feature importance, and compares direct total-rental predictions with the sum of separately predicted casual and registered rentals.
+
+Open `results/danielle_tree_models.ipynb` to view the complete analysis, model training, tuning results, evaluation metrics, and visualizations. Results and saved model files are available in `results/tree_models/`.
+
+**Methodology:** Models use the team's fixed chronological training and testing split, five-fold expanding time-series cross-validation for hyperparameter tuning, and log-transformed rental targets. Performance is evaluated using RMSE, MAE, and RMSLE on the October–December 2012 test period.

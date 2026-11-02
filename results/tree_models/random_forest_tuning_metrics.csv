@@ -1,0 +1,4 @@
+target,best_cv_RMSE,test_RMSE,test_MAE,test_RMSLE,best_params
+casual,24.86910969418665,24.104930023054962,12.305753770078775,0.6070176454389653,"{'regressor__max_depth': None, 'regressor__min_samples_leaf': 1, 'regressor__min_samples_split': 2, 'regressor__n_estimators': 100}"
+registered,70.51007624494451,72.10727907181297,47.884569883252695,0.47835196742734004,"{'regressor__max_depth': None, 'regressor__min_samples_leaf': 1, 'regressor__min_samples_split': 2, 'regressor__n_estimators': 100}"
+cnt,89.39343918364979,88.16430257582583,58.57393905501184,0.465340475451024,"{'regressor__max_depth': None, 'regressor__min_samples_leaf': 1, 'regressor__min_samples_split': 2, 'regressor__n_estimators': 100}"
