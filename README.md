@@ -57,3 +57,11 @@ This section contains the tree-based regression models for predicting casual, re
 Open `results/danielle_tree_models.ipynb` to view the complete analysis, model training, tuning results, evaluation metrics, and visualizations. Results and saved model files are available in `results/tree_models/`.
 
 **Methodology:** Models use the team's fixed chronological training and testing split, five-fold expanding time-series cross-validation for hyperparameter tuning, and log-transformed rental targets. Performance is evaluated using RMSE, MAE, and RMSLE on the October–December 2012 test period.
+
+## Malachi: Shared evaluation and interpretation
+
+Use `src.evaluate` for shared metrics, count inversion, timestamp alignment,
+JSONL results logging, and standard plots. Run `python -m src.evaluation_report`
+to compare the committed linear and tree predictions and generate residual and
+driver figures. See [EVALUATION.md](EVALUATION.md) for the API and evaluation rules,
+and `results/evaluation/INTERPRETATION.md` for measured findings.
