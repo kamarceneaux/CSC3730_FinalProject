@@ -62,7 +62,7 @@ Open `results/danielle_tree_models.ipynb` to view the complete analysis, model t
 
 This section contains the distance-based regression models for predicting casual, registered, and total hourly bike rentals: K-Nearest Neighbors (KNN) and Support Vector Regression (SVR, RBF kernel). Each model is tuned separately for each target, and the casual and registered predictions are summed and compared with the direct total-rental model.
 
-Open `results/kiersten_distance_models.ipynb` to view the results, tuning curves, team comparison, and interpretation. The notebook only loads saved results, so it runs in seconds. To retrain, run these from the project root (KNN takes about 2 minutes and SVR about 9 minutes on a laptop):
+Open `results/kiersten_distance_models.ipynb` to view the results, tuning curves, team comparison, and interpretation. The notebook only loads saved results, so it runs in seconds. To retrain, run these from the project root:
 
 ```
 python -m src.distance_models knn
