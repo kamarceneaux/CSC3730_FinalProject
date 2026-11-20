@@ -17,7 +17,7 @@ import sklearn
 from sklearn.compose import ColumnTransformer, TransformedTargetRegressor
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import Lasso, Ridge
-from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_squared_log_error
+from .evaluate import metrics, to_counts
 from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -28,17 +28,6 @@ TARGETS = ("casual", "registered", "cnt")
 # Separate ranges: sklearn's Ridge and Lasso objectives normalize loss differently.
 ALPHAS = {"Ridge": np.logspace(-3, 4, 15), "Lasso": np.logspace(-5, 0, 16)}
 
-
-def to_counts(log_predictions):
-    """Invert the team's log target convention and enforce nonnegative counts."""
-    return np.maximum(np.expm1(log_predictions), 0.0)
-
-
-def metrics(actual, predicted):
-    """All errors use original rental counts; RMSLE additionally logs counts."""
-    return {"RMSE": float(np.sqrt(mean_squared_error(actual, predicted))),
-            "MAE": float(mean_absolute_error(actual, predicted)),
-            "RMSLE": float(np.sqrt(mean_squared_log_error(actual, predicted)))}
 
 
 def load_data(root=ROOT):

@@ -58,6 +58,14 @@ Open `results/danielle_tree_models.ipynb` to view the complete analysis, model t
 
 **Methodology:** Models use the team's fixed chronological training and testing split, five-fold expanding time-series cross-validation for hyperparameter tuning, and log-transformed rental targets. Performance is evaluated using RMSE, MAE, and RMSLE on the October–December 2012 test period.
 
+## Malachi: Shared evaluation and interpretation
+
+Use `src.evaluate` for shared metrics, count inversion, timestamp alignment,
+JSONL results logging, and standard plots. Run `python -m src.evaluation_report`
+to compare the committed linear and tree predictions and generate residual and
+driver figures. See [EVALUATION.md](EVALUATION.md) for the API and evaluation rules,
+and `results/evaluation/INTERPRETATION.md` for measured findings.
+
 ## Ben: Baseline Models
 
 Four deliberately simple baselines that every tuned model has to beat: the training mean, the mean for each hour × working-day cell, the same profile over only the last 8 weeks of training, and unregularized OLS on the linear feature set (Marcus's pipeline with the penalty removed). Nothing is tuned. They use the team's fixed split, the same five expanding-window folds, and the same RMSE/MAE/RMSLE metrics.
