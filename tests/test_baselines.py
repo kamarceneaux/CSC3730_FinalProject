@@ -29,3 +29,21 @@ def test_out_of_fold_predictions_never_see_their_own_rows():
     changed.loc[changed.index[-1], "registered"] = 10_000
     oof_changed, _ = chronological_oof(profile, changed, "registered", cv)
     assert oof_changed[-1] == oof[-1]
+
+
+def test_results_log_is_rebuilt_not_appended(tmp_path):
+    import json
+    from src.baselines import write_results_log
+    _, test, _ = load_data()
+    test = test.iloc[:48]
+    predictions = test[["datetime"]].copy()
+    for target in ["casual", "registered", "cnt", "summed_total"]:
+        predictions[f"training_mean_{target}"] = 1.0
+    scores = pd.DataFrame({"model": ["Training mean"] * 4, "target": ["casual", "registered", "cnt", "summed_total"],
+                           "CV_RMSE": [1.0, 2.0, 3.0, np.nan]})
+    path = tmp_path / "results.jsonl"
+    for _ in range(2):  # a second run must replace the file, not add to it
+        write_results_log(scores, predictions, test, path)
+    records = [json.loads(line) for line in path.read_text().splitlines()]
+    assert [r["target"] for r in records] == ["casual", "registered", "cnt", "summed_total"]
+    assert records[-1]["metadata"]["CV_RMSE"] is None and records[0]["n"] == 48

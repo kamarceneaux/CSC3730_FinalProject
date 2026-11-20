@@ -24,6 +24,7 @@ from sklearn.dummy import DummyRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import TimeSeriesSplit
 
+from src.evaluate import log_result
 from src.linear_models import TARGETS, build_model, load_data, metrics
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,6 +107,26 @@ def data_hashes():
     return {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 
 
+def write_results_log(scores, predictions, test, path):
+    """Team results log (Malachi's src.evaluate format), one record per model and target.
+
+    The file is rebuilt on every run rather than appended to, so it always matches
+    metrics.csv and test_predictions.csv instead of piling up stale runs.
+    """
+    path.unlink(missing_ok=True)
+    hashes, cv_rmse = data_hashes(), scores.set_index(["model", "target"]).CV_RMSE
+    for name, slug, target in [(n, n.split(" (")[0].lower().replace(" ", "_"), t)
+                               for n in scores.model.unique() for t in [*TARGETS, "summed_total"]]:
+        cv = cv_rmse.get((name, target))
+        log_result(path, model=name, target=target, actual=test["cnt" if target == "summed_total" else target],
+                   predicted=predictions[f"{slug}_{target}"], run_id=f"baselines-{slug}-{target}",
+                   metadata={"owner": "Ben", "tuned": False, "target_scale": "counts",
+                             "split": "train 2011-01..2012-09, test 2012-10..2012-12",
+                             "cv": f"TimeSeriesSplit({N_SPLITS})",
+                             "CV_RMSE": None if cv is None or pd.isna(cv) else float(cv),
+                             "data_sha256": hashes})
+
+
 def versions():
     return {"python": platform.python_version(), "numpy": np.__version__,
             "pandas": pd.__version__, "sklearn": sklearn.__version__}
@@ -165,6 +186,7 @@ def run(output_dir=OUTPUT):
         rows.append({"model": candidate.name, "target": "summed_total", **metrics(test.cnt, summed)})
     scores = pd.DataFrame(rows)
     scores.to_csv(out / "metrics.csv", index=False)
+    write_results_log(scores, predictions, test, out / "results.jsonl")
     pd.DataFrame(folds).to_csv(out / "cv_fold_scores.csv", index=False)
     predictions.to_csv(out / "test_predictions.csv", index=False)
 
