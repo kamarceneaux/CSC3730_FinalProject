@@ -1,0 +1,61 @@
+model,target,fold,RMSE
+Training mean,casual,1,53.94321453760228
+Training mean,casual,2,42.320117086766544
+Training mean,casual,3,27.59325892567572
+Training mean,casual,4,72.76113025172504
+Training mean,casual,5,64.18852019511057
+Training mean,registered,1,144.3576064420029
+Training mean,registered,2,125.06975435528803
+Training mean,registered,3,111.48533008774922
+Training mean,registered,4,190.3032720642224
+Training mean,registered,5,216.32384622631835
+Training mean,cnt,1,183.90541433153706
+Training mean,cnt,2,150.8570042401029
+Training mean,cnt,3,121.91227446192636
+Training mean,cnt,4,238.4174630127548
+Training mean,cnt,5,259.05940963981755
+Hour profile,casual,1,44.84854841950373
+Hour profile,casual,2,25.802296381161216
+Hour profile,casual,3,28.342155642703133
+Hour profile,casual,4,55.06968429545209
+Hour profile,casual,5,42.472044420210196
+Hour profile,registered,1,107.6536171578413
+Hour profile,registered,2,64.34084870070818
+Hour profile,registered,3,55.04248686922227
+Hour profile,registered,4,121.23126715787896
+Hour profile,registered,5,135.81943896921132
+Hour profile,cnt,1,144.53574779821741
+Hour profile,cnt,2,81.36733809530254
+Hour profile,cnt,3,65.3725509088269
+Hour profile,cnt,4,162.7019284706218
+Hour profile,cnt,5,168.5676189669262
+Recent hour profile (8 wk),casual,1,35.83781796635404
+Recent hour profile (8 wk),casual,2,28.313029187728088
+Recent hour profile (8 wk),casual,3,30.540471394731682
+Recent hour profile (8 wk),casual,4,70.47464515278482
+Recent hour profile (8 wk),casual,5,27.835429576168742
+Recent hour profile (8 wk),registered,1,97.12546313726189
+Recent hour profile (8 wk),registered,2,49.53053215368125
+Recent hour profile (8 wk),registered,3,59.13042575604097
+Recent hour profile (8 wk),registered,4,104.41435069388676
+Recent hour profile (8 wk),registered,5,63.92425174342153
+Recent hour profile (8 wk),cnt,1,125.6996157877709
+Recent hour profile (8 wk),cnt,2,69.4090862731269
+Recent hour profile (8 wk),cnt,3,77.30158221190548
+Recent hour profile (8 wk),cnt,4,161.88402956702697
+Recent hour profile (8 wk),cnt,5,79.52798952299729
+Linear regression (OLS),casual,1,33.845504209516314
+Linear regression (OLS),casual,2,37.97920645242495
+Linear regression (OLS),casual,3,15.017764279696433
+Linear regression (OLS),casual,4,38.665866241841336
+Linear regression (OLS),casual,5,47.480503106720235
+Linear regression (OLS),registered,1,77.03981642727082
+Linear regression (OLS),registered,2,75.15674375930232
+Linear regression (OLS),registered,3,85.88588253940301
+Linear regression (OLS),registered,4,81.5867103162505
+Linear regression (OLS),registered,5,105.02404984958856
+Linear regression (OLS),cnt,1,86.90615746327377
+Linear regression (OLS),cnt,2,102.65197239828872
+Linear regression (OLS),cnt,3,91.96148286867398
+Linear regression (OLS),cnt,4,99.03038295003866
+Linear regression (OLS),cnt,5,144.88864528588564

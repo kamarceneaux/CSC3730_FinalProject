@@ -82,3 +82,16 @@ JSONL results logging, and standard plots. Run `python -m src.evaluation_report`
 to compare the committed linear and tree predictions and generate residual and
 driver figures. See [EVALUATION.md](EVALUATION.md) for the API and evaluation rules,
 and `results/evaluation/INTERPRETATION.md` for measured findings.
+
+## Ben: Baseline Models
+
+Four deliberately simple baselines that every tuned model has to beat: the training mean, the mean for each hour × working-day cell, the same profile over only the last 8 weeks of training, and unregularized OLS on the linear feature set (Marcus's pipeline with the penalty removed). Nothing is tuned. They use the team's fixed split, the same five expanding-window folds, and the same RMSE/MAE/RMSLE metrics.
+
+Open `results/ben_baselines.ipynb`, or run from the project root (Python 3.12):
+
+```
+python -m src.baselines
+python -m pytest -q
+```
+
+Metrics, fold scores, test predictions, and figures are written to `results/baselines/`.
