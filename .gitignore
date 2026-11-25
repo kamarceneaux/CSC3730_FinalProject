@@ -24,9 +24,3 @@ Thumbs.db
 results/*.pkl
 results/*.joblib
 results/tree_models/*.joblib
-
-# Private notes for Claude (local only)
-notes/
-
-# Assignment PDF (local only)
-Group_1.pdf
