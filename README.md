@@ -58,6 +58,23 @@ Open `results/danielle_tree_models.ipynb` to view the complete analysis, model t
 
 **Methodology:** Models use the team's fixed chronological training and testing split, five-fold expanding time-series cross-validation for hyperparameter tuning, and log-transformed rental targets. Performance is evaluated using RMSE, MAE, and RMSLE on the October–December 2012 test period.
 
+## Kiersten: KNN and SVR Models
+
+This section contains the distance-based regression models for predicting casual, registered, and total hourly bike rentals: K-Nearest Neighbors (KNN) and Support Vector Regression (SVR, RBF kernel). Each model is tuned separately for each target, and the casual and registered predictions are summed and compared with the direct total-rental model.
+
+Open `results/kiersten_distance_models.ipynb` to view the results, tuning curves, team comparison, and interpretation. The notebook only loads saved results, so it runs in seconds. To retrain, run these from the project root:
+
+```
+python -m src.distance_models knn
+python -m src.distance_models svr
+```
+
+Metrics, tuning results, diagnostic plots, and aligned test predictions are written to `results/distance_models/`. `test_predictions.csv` has `knn_*` and `svr_*` columns for each target, plus summed totals, on the same October–December 2012 hours as the other models.
+
+**Methodology:** Models use the team's fixed chronological split, log-transformed targets, and five-fold expanding time-series cross-validation, with features scaled inside each fold. Settings were chosen on validation RMSE only, never on the test set. KNN tried `k` from 1 to 80 with uniform and distance weighting; SVR tried `C` of 0.1, 1, 3, and 10. `C=100` was left out because of run time.
+
+**Results:** SVR had the lowest test RMSE of the saved models for casual (19.0), registered (56.8), and total rentals (63.0 direct, 62.6 summed). KNN was much weaker on registered and total demand (total RMSE 111.9). The small difference between summed and direct totals should not be treated as significant.
+
 ## Malachi: Shared evaluation and interpretation
 
 Use `src.evaluate` for shared metrics, count inversion, timestamp alignment,
