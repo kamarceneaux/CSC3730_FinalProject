@@ -1,0 +1,9 @@
+Model,Target,CV_RMSE,RMSE,MAE,RMSLE,Parameters
+GradientBoosting,casual,25.009275367132595,23.763128226266126,11.534748224285961,0.5652674799576675,"{""learning_rate"": 0.1, ""max_depth"": 3, ""n_estimators"": 150}"
+GradientBoosting,registered,68.69930017521058,57.58214382766501,35.38157130571167,0.41037076700826375,"{""learning_rate"": 0.1, ""max_depth"": 3, ""n_estimators"": 350}"
+GradientBoosting,cnt,80.00418974971096,65.95622912001646,41.60962268137994,0.39156813520959344,"{""learning_rate"": 0.1, ""max_depth"": 3, ""n_estimators"": 350}"
+GradientBoosting,Summed groups,,68.51848836727422,43.35208195029424,0.3988495530396148,separate tuned casual + registered
+XGBoost,casual,23.131667066321562,22.45965281652127,11.45797348022461,0.5738015767935744,"{""learning_rate"": 0.1, ""max_depth"": 5, ""n_estimators"": 98}"
+XGBoost,registered,63.23721469511247,62.34861353209869,39.024383544921875,0.44592114732000504,"{""learning_rate"": 0.1, ""max_depth"": 5, ""n_estimators"": 145}"
+XGBoost,cnt,76.96252023880474,73.01148039542309,46.362430572509766,0.42331601332103885,"{""learning_rate"": 0.1, ""max_depth"": 5, ""n_estimators"": 164}"
+XGBoost,Summed groups,,71.81533189042051,46.319725036621094,0.43023679475950655,separate tuned casual + registered
